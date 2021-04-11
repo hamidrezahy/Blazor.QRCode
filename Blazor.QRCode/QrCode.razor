@@ -1,0 +1,28 @@
+﻿@namespace Blazor.QRCode
+<div id="@ElementId"></div>
+@code {
+
+    // user for init
+    [Parameter]
+    public string ElementId { get; set; } = "qrcode";
+
+    [Parameter]
+    public string Width { get; set; } = "150";
+
+    [Parameter]
+    public string height { get; set; } = "150";
+
+    [Parameter]
+    public string Text { get; set; } = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        
+        // initialize qr code scanner
+        await JsRuntime.InvokeVoidAsync("initQrCode", ElementId,Text,Width,height);
+
+        return;
+    }
+
+}

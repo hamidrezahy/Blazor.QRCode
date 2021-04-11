@@ -1,0 +1,99 @@
+﻿@namespace Blazor.QRCode
+
+<div style="width: @Width" id="@ElementId" class="@ElementClass"></div>
+
+@code {
+
+    // user for init
+    [Parameter]
+    public string ElementId { get; set; } = "qrReader";
+
+    [Parameter]
+    public string ElementClass { get; set; } = "";
+
+    [Parameter]
+    public string Width { get; set; } = "80%";
+
+
+    // results
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnDetect { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnError { get; set; }
+
+
+    // overrides
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _changeOnSuccess = LocalChangeOnSuccess;
+        _changeOnFailed = LocalChangeOnFailed;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        
+        // initialize qr code scanner
+        await JsRuntime.InvokeVoidAsync("initQrReader", ElementId);
+
+        return;
+    }
+
+
+
+    #region Success
+    private static Func<string, Task> _changeOnSuccess;
+
+    // save static data to local data
+    private async Task LocalChangeOnSuccess(string value)
+    {
+        Value = value;
+
+        // fire OnDetect event
+        await ValueChanged.InvokeAsync(value);
+        await OnDetect.InvokeAsync(value);
+    }
+
+    // static function to run from js when qr code scan is success
+    [JSInvokable]
+    public static void OnSuccess(string text)
+    {
+        // save static data to local data
+        _changeOnSuccess.Invoke(text);
+    }
+    #endregion
+
+    #region ERROR
+    private static Func<string, Task> _changeOnFailed;
+
+    // save static data to local data
+    private async Task LocalChangeOnFailed(string value)
+    {
+        Value = value;
+
+        // fire OnFailed event
+        await ValueChanged.InvokeAsync(null);
+        await OnError.InvokeAsync(value);
+    }
+
+    // static function to run from js when qr code scan is success
+    [JSInvokable]
+    public static void OnFailed(string text)
+    {
+        // save static data to local data
+        _changeOnFailed.Invoke(text);
+    }
+    #endregion
+
+
+
+}
