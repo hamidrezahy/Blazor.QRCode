@@ -18,9 +18,9 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
-        
+
         // initialize qr code scanner
-        await JsRuntime.InvokeVoidAsync("initQrCode", ElementId,Text,Width,height);
+        await JsRuntime.InvokeVoidAsync("initQrCode", ElementId, Text, Width, height);
 
         return;
     }

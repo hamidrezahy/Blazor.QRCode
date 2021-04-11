@@ -3,7 +3,15 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1</Version>
+    <Version>0.1.1</Version>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Copyright>Hamidreza Hematyar</Copyright>
+    <Description>Blazor QRCode reader and QRCode Maker</Description>
+    <PackageProjectUrl>https://github.com/hamidrezahy/Blazor.QRCode</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hamidrezahy/Blazor.QRCode</RepositoryUrl>
+    <PackageTags>QR, QRcode</PackageTags>
+    <PackageReleaseNotes>Fix bugs</PackageReleaseNotes>
   </PropertyGroup>
 
   
@@ -13,6 +21,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
