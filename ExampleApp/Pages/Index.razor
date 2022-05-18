@@ -1,0 +1,30 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<QrCode
+    ElementId="id"
+    Width="150"
+    height="150"
+    Text="hamidrez77@gmail.com">
+</QrCode>
+<br/>
+<QrCodeReader OnDetect="@DetectCallBack" OnError="@ErrorCallBack" />
+
+@code
+{
+
+    public string text { get; set; } = "";
+
+    public void DetectCallBack(string detectedString)
+    {
+    }
+
+    public void ErrorCallBack(string errormesg)
+    {
+    }
+}
