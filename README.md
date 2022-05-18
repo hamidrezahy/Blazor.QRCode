@@ -14,7 +14,7 @@ add js files in client_side _Host.cshml or index.html
 Befor closed body tag:
 ```
 <script src="_content/Blazor.QRCode/html5-qrcode.min.js"></script>
-<script src="_content/Blazor.QRCode/qrcode.minErrorCallBack.js"></script>
+<script src="_content/Blazor.QRCode/qrcode.min.js"></script>
 <script src="_content/Blazor.QRCode/qrcode-init.js"></script>
 ```
 
