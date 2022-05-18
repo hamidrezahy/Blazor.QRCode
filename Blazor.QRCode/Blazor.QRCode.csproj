@@ -5,7 +5,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>0.2.1</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-<!--    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
     <Copyright>Hamidreza Hematyar</Copyright>
     <Description>Blazor QRCode reader and QRCode Maker</Description>
     <PackageProjectUrl>https://github.com/hamidrezahy/Blazor.QRCode</PackageProjectUrl>
@@ -14,7 +13,10 @@
     <PackageReleaseNotes>Update to .Net6 and fix reported bugs</PackageReleaseNotes>
     <Title>Blazor QRCode</Title>
   </PropertyGroup>
-
+  
+  <PropertyGroup>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
   
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -26,7 +28,7 @@
 
   <ItemGroup>
     <Content Include="LICENSE.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\html5-qrcode.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
